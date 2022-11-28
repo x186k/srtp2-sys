@@ -14,7 +14,6 @@ categories = ["multimedia", "network-programming", "external-ffi-bindings"]
 license = "BSD-3-Clause"
 
 [dependencies]
-openssl-sys = { version = "0.9", optional = true }
 
 [build-dependencies]
 bindgen = "0.55"
