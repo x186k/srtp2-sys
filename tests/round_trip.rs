@@ -9,7 +9,7 @@ struct Header {
     marker: bool,
     sequence: u16,
     timestamp: u32,
-    ssrc: u32,
+    _ssrc: u32,
 }
 
 impl Header {
@@ -67,7 +67,7 @@ unsafe fn round_trip(
             marker: false,
             sequence,
             timestamp: 0xDECAFBAD + (sequence as u32 / 10) * 3000,
-            ssrc: 0xDEADBEEF,
+            _ssrc: 0xDEADBEEF,
         }
         .to_bytes(1000);
         let mut output = input.clone();
@@ -174,7 +174,6 @@ fn round_trip_crypto_policy_set_rtp_default() {
     unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_rtp_default) }
 }
 
-#[cfg(feature = "enable-openssl")]
 mod enable_openssl {
     use super::round_trip;
 

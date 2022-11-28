@@ -5,16 +5,12 @@ fn main() {
 
     println!("cargo:rerun-if-changed=wrapper.h");
 
-    let mut bindgen_builder = bindgen::Builder::default()
+    let bindgen_builder = bindgen::Builder::default()
         .clang_args(&["-I./libsrtp/include"])
         .header("wrapper.h")
         .whitelist_function("(srtp|SRTP|srtcp|SRTCP)_.*")
         .whitelist_type("(srtp|SRTP|srtcp|SRTCP)_.*")
         .whitelist_var("(srtp|SRTP|srtcp|SRTCP)_.*");
-
-    if !cfg!(feature = "enable-openssl") {
-        bindgen_builder = bindgen_builder.blacklist_item(".*(192|gcm|GCM).*")
-    }
 
     bindgen_builder
         .generate()
@@ -36,8 +32,7 @@ fn find_libsrtp2(_out_dir: &str) {
 
 #[cfg(all(target_env = "msvc", not(feature = "build")))]
 fn find_libsrtp2(_out_dir: &str) {
-    vcpkg::find_package("libsrtp")
-        .expect("Failed to find libsrtp via vcpkg");
+    vcpkg::find_package("libsrtp").expect("Failed to find libsrtp via vcpkg");
 }
 
 #[cfg(all(not(target_env = "msvc"), not(feature = "build")))]
@@ -64,23 +59,6 @@ fn find_libsrtp2(out_dir: &str) {
             Ok(path) => configure.arg(format!("--with-log-file={}", path)),
             Err(_) => configure.arg("--enable-log-stdout"),
         };
-    }
-
-    #[cfg(feature = "enable-openssl")]
-    {
-        let openssl_include = env::var("DEP_OPENSSL_INCLUDE").unwrap();
-
-        configure
-            .arg("--enable-openssl")
-            .env("crypto_CFLAGS", format!("-I{}", openssl_include))
-            // Below are to fake the libsrtp build system
-            // so it believes we have proper openssl library.
-            // The library itself will be provided by the `openssl-sys` crate
-            // but at this point we can't know where it is.
-            .env("crypto_LIBS", " ")
-            .env("ac_cv_search_EVP_EncryptInit", " ")
-            .env("ac_cv_search_EVP_aes_128_ctr", " ")
-            .env("ac_cv_search_EVP_aes_128_gcm", " ");
     }
 
     let out = configure

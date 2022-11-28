@@ -27,11 +27,9 @@ vcpkg = "0.2"
 [features]
 skip-linking = []
 build = ["make-cmd"]
-enable-openssl = ["openssl-sys"]
-build-openssl = ["enable-openssl", "openssl-sys/vendored"]
 
 [package.metadata.docs.rs]
-features = ["skip-linking", "enable-openssl"]
+features = ["skip-linking"]
 
 # not used by build.rs
 [package.metadata.pkg-config]

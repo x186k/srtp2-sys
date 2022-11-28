@@ -32,20 +32,6 @@ You can pass environment variable `SRTP2_SYS_DEBUG_LOGGING` and optionally
 Note that the cargo caches the build artifacts so you need to `cargo clean`
 before passing those variables.
 
-## `enable-openssl`
-
-Enable libsrtp2 features which requires the openssl library,
-including cryptography using gcm mode and 192 bits algorithms.
-
-System wide installations tend not to be compiled with this options.
-It's recommended to use this feature with the `build` feature.
-
-## `build-openssl`
-
-Activate the `enable-openssl` feature, and also build the openssl from the source.
-
-In case if you don't want to rely on the system package manager.
-
 ## `skip-linking`
 
 Only generates bindings and skip any linking process.
