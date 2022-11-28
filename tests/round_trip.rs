@@ -174,76 +174,72 @@ fn round_trip_crypto_policy_set_rtp_default() {
     unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_rtp_default) }
 }
 
-mod enable_openssl {
-    use super::round_trip;
-
-    #[test]
-    fn round_trip_crypto_policy_set_aes_cm_192_null_auth() {
-        unsafe {
-            round_trip(
-                false,
-                srtp2_sys::srtp_crypto_policy_set_aes_cm_192_null_auth,
-            )
-        }
+#[test]
+fn round_trip_crypto_policy_set_aes_cm_192_null_auth() {
+    unsafe {
+        round_trip(
+            false,
+            srtp2_sys::srtp_crypto_policy_set_aes_cm_192_null_auth,
+        )
     }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_cm_192_hmac_sha1_32() {
-        unsafe {
-            round_trip(
-                false,
-                srtp2_sys::srtp_crypto_policy_set_aes_cm_192_hmac_sha1_32,
-            )
-        }
+#[test]
+fn round_trip_crypto_policy_set_aes_cm_192_hmac_sha1_32() {
+    unsafe {
+        round_trip(
+            false,
+            srtp2_sys::srtp_crypto_policy_set_aes_cm_192_hmac_sha1_32,
+        )
     }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_cm_192_hmac_sha1_80() {
-        unsafe {
-            round_trip(
-                false,
-                srtp2_sys::srtp_crypto_policy_set_aes_cm_192_hmac_sha1_80,
-            )
-        }
+#[test]
+fn round_trip_crypto_policy_set_aes_cm_192_hmac_sha1_80() {
+    unsafe {
+        round_trip(
+            false,
+            srtp2_sys::srtp_crypto_policy_set_aes_cm_192_hmac_sha1_80,
+        )
     }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_gcm_128_8_auth() {
-        unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_128_8_auth) }
-    }
+#[test]
+fn round_trip_crypto_policy_set_aes_gcm_128_16_auth() {
+    unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_128_16_auth) }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_gcm_128_8_only_auth() {
-        unsafe {
-            round_trip(
-                false,
-                srtp2_sys::srtp_crypto_policy_set_aes_gcm_128_8_only_auth,
-            )
-        }
-    }
+#[test]
+fn round_trip_crypto_policy_set_aes_gcm_128_8_auth() {
+    unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_128_8_auth) }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_gcm_128_16_auth() {
-        unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_128_16_auth) }
+#[test]
+fn round_trip_crypto_policy_set_aes_gcm_128_8_only_auth() {
+    unsafe {
+        round_trip(
+            false,
+            srtp2_sys::srtp_crypto_policy_set_aes_gcm_128_8_only_auth,
+        )
     }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_gcm_256_8_auth() {
-        unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_256_8_auth) }
-    }
+#[test]
+fn round_trip_crypto_policy_set_aes_gcm_256_8_auth() {
+    unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_256_8_auth) }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_gcm_256_8_only_auth() {
-        unsafe {
-            round_trip(
-                false,
-                srtp2_sys::srtp_crypto_policy_set_aes_gcm_256_8_only_auth,
-            )
-        }
+#[test]
+fn round_trip_crypto_policy_set_aes_gcm_256_8_only_auth() {
+    unsafe {
+        round_trip(
+            false,
+            srtp2_sys::srtp_crypto_policy_set_aes_gcm_256_8_only_auth,
+        )
     }
+}
 
-    #[test]
-    fn round_trip_crypto_policy_set_aes_gcm_256_16_auth() {
-        unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_256_16_auth) }
-    }
+#[test]
+fn round_trip_crypto_policy_set_aes_gcm_256_16_auth() {
+    unsafe { round_trip(false, srtp2_sys::srtp_crypto_policy_set_aes_gcm_256_16_auth) }
 }
